@@ -1,0 +1,322 @@
+/* Upon starting a new CSS document, make a list of all the colors (and their hex codes) you want to use within your file. Later on, you can go back to this list and simply copy-paste the colors’ values into their appropriate places within your CSS document, saving you a great deal of time */
+
+/*
+Colors used:
+
+space cadet  #2B2D42
+Manatee #8D99AE
+Alice Blue #EDF2F4
+Imperial Red #EF233C
+Crimson #D80032
+*/
+
+/* CSS variables for my colors*/
+:root {
+  --primary-color: #EDF2F4; /*Alice Blue*/
+  --primary-font: #000; /*Black*/
+  --secondary-font: white;
+  --a-vis: #191970; /*Midnight Blue*/
+  --a-hov: #4682B4; /*Steel Blue*/
+  --a-active: blue;
+  --button-secondary-bg: #2B2D42;
+  --crimson: crimson;
+  --lightsteelblue: lightsteelblue;
+  --footer-bg: #8D99AE;
+  --sun-1: #edc655;
+  --sun-2: #fcffad;
+  --sun-3: #f76414;
+  --border:rgba(0, 0, 0, 0.3);
+  /*All my repetitive values as variables*/
+  --primary-font-weight: 400;
+  --primary-font-size: 16px;
+  --primary-line-height: 1.6;
+  --body-min-w: 400px;
+  --h1-size: 30px;
+  --h2-size: 24px;
+  --h3-size: 18px;
+  --h-weight: 700;
+  --full-viewport: 100vw;
+
+}
+
+
+/*Let's start with some general styling for the HTML document*/
+body{
+  background: var(--primary-color);
+  font-family: 'Roboto Condensed', sans-serif; /* this assigns the roboto condensed font to the body element in the HTML file*/
+  font-weight: var(--primary-font-weight);
+  font-size: var(--primary-font-size);
+  line-height: var(--primary-line-height);
+  color: var(--primary-font); /*this is the text color*/
+  min-width: var(--body-min-w);
+}
+
+h1 {
+  font-size: var(--h1-size);
+  font-weight: var(--h-weight);
+}
+h2 {
+  font-size: var(--h2-size);
+  font-weight: var(--h-weight);
+}
+h3 {
+  font-size: var(--h3-size);
+  font-weight: var(--h-weight);
+}
+
+/* This code adds styling to my links */
+a {
+  color: var(--primary-font);
+}
+
+a:visited {
+  /* visited link - must come before other pseudo classes like ative and hover */
+  color: var(--a-vis);
+}
+
+a:hover, a:focus {
+  /* a:focus selector ensures accessibility for clients only using a keyboard */
+  /* No underlining when hovering over a link + change of color */
+  text-decoration: none;
+  color: var(--a-hov);
+}
+a:active {
+  /* selected link - must come AFTER hover pseudo class */
+  color: var(--a-active);
+}
+
+/* This adds styling to my buttons*/
+button, .button {
+  /* overwrites browser defaults and resets the border */
+  border: none;
+  /* takes the font from the outer container */
+  font-family: inherit;
+  /* styles the background color, font color, and text decoration (underline, etc.) of the button */
+  /*I have a question here: I thought the button was, pr the assignments instruction, supposed to use the primary color as its background color? How come we are using something else in the code?*/
+  background-color: var(--crimson);
+  color: var(--secondary-font);
+  text-decoration: none;
+  /*adds spacing to the button (this will be discussed more in-depth later) */
+  padding: 10px;
+  border-radius: 3px;
+  /* gives the button a bottom border with a width of 2px, a type of solid, and a color in RGBA format */
+  border-bottom: 2px solid var(--border);
+  /* adding opacity transition that last for 0.2 seconds */
+  transition: 0.2s opacity;
+}
+button:hover, button:focus, .button:hover, .button:focus {
+  /* lets the mouse appear as a hand when hovering over the button */
+  cursor: pointer;
+  /* reduces the opacity of the button to 80% */
+  opacity: 0.8;
+}
+
+/* This adds a secondary layer of styling to the second button*/
+.button__secondary {
+  background-color: var(--button-secondary-bg);
+  color: var(--secondary-font);
+}
+
+/* I used the profile class on my index site for its content. The profile block contains all elements belonging to my profile, which are my profile image, my header, and my short description*/
+.profile {
+  max-width: 700px;
+  margin: 0 auto; /* this line of code centers the profile block on the page */
+}
+/* This styles the portrait, making it float and rounding the corners*/
+.profile__portrait {
+  float: left;
+  width: 250px;
+  margin-right: 40px;
+  border-radius: 50%;
+}
+#dev_word{
+  font-weight: bold;
+}
+
+/* Below: applies to all the code on the page*/
+* {
+  box-sizing: border-box;
+}
+
+/*now comes header styling*/
+/* First I'll start off by styling the parent container with a base behavior */
+.page-header {
+  display: flex; /* makes the parent element a flex box*/
+  width: 100%; /* makes the container cover the full width of my page */
+  /* max-height: 120px; */
+  padding: 20px; /* gives it a 20px padding on all sides */
+  border: none; /* No overall border*/
+  border-bottom: 2px solid var(--border); /* bottom border declared */
+  box-sizing: border-box; /*Width and height apply to all parts of the element: content, padding and borders:*/
+
+}
+.page-header__item {
+  flex: 0 1 200px; /* Gives the child items a base width of 200px but also the ability to shrink along the same ratio. They won't be able to grow since I will only be adding this property to the navigation */
+  font-size: 30px;
+}
+.page-header__item:last-child /* I use this pseudo selector (:last-child) to target the navigation in my CSS, as it's the last child of the two flexbox child items */ {
+  flex-grow: 1; /* I'm overwriting the original flex-grow property  */
+  text-align: right;
+}
+.page-header__item:first-child { /* This should take care of my logo */
+  max-height: 120px;
+  height: auto;
+}
+
+
+/* Now I need to remove remove the dots from te unordered kust and reformat it in a horizontal format */
+.navigation-list {
+  list-style-type: none; /* removes dots from items*/
+}
+.navigation-list__item--active {
+  /* No underlining under active navigational tab*/
+  text-decoration: none;
+}
+
+/*the following code adds the display property with a value of inline-block, together with the margin-left property, to each of your list items. This will align them in a row (inline-block) and give them some space in-between them. You can target the list items by first targeting your navigation-list class, then specifically targeting the li inside of that class */
+.navigation-list li {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+/* Now I will add styling to my about page */
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.about__list {
+  list-style: none;/* removes dots from items */
+}
+.about__graphic { /* styling for my picture */
+  max-width: var(--full-viewport);
+  max-height: 800px;
+  text-align: center;
+}
+.about__graphic__pic { /* styling for my picture */
+  max-width: var(--full-viewport);
+  max-height: 400px;
+  text-align: center;
+}
+
+
+/* Now I'll add styling to and center my navigation bar - I don't know if this is superflous given the next chunk of code?*/
+footer {
+  clear: both; /* should make it appear beneath image - The clear property specifies on which sides of an element floating elements are not allowed to float. */
+  display: flex;
+  background-color: var(--footer-bg);
+  position: fixed;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: var(--full-viewport);
+  bottom: 0;
+}
+.inner__footer__item{
+  margin: 5px;/* This adds spacing between the items */
+  width: 30px;
+  height: 30px;
+}
+.inner__footer__item:hover{
+  opacity: 0.8; /* when hovering, the logos "light up" */
+}
+
+/*Below comes the styling for work page - here, I used the CSS grid for styling on my HTML elements */
+/*First i'll declare a grid fallback in case the browser doesn't support css grid - note: this must come before all else */
+/* starts grid fallback */
+.grid__item {
+ display: inline-block;
+}
+/* ends grid fallback */
+
+.grid { /* here I'm creating the parent container */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* It’s considered good practice to specify only one property, and this property is usually the columns property */
+  grid-gap: 20px; /* creates space but use this instead of using margin */
+  padding: 20px;
+}
+
+
+.grid__item {
+  background-color: var(--lightsteelblue);
+  /* color: #; */
+}
+
+/* Now I'll use make one of the items stretch and take up more space */
+.grid__item:last-child { /* I first target the last grid__item with the pseudo-selector: last child */
+  grid-column: 3 / 3; /* specifying that it should be in the third column */
+  grid-row: 1 / 3;/* specifying that it shall start in the first row and end in the third */
+}
+
+/* Now! on to responsive design for the grid! I'll use media queries for this -> Remember to keep these at the END of my document so they don't overwrite unintentionally */
+
+@media all and (max-width: 500px) { /* this media querie specifies X rules for displays smaller than 500px - the value all dictates that this should be apllied to alle media */
+  .grid {
+    grid-template-columns: 1fr; /* changes the grid layout from a 3-column grid to a 1-column grid (fr = unit fraction) */
+  }
+  .about {
+    align-items: flex-end;
+    max-width: var(--full-viewport);
+  }
+
+}
+@media all and (min-width: 500px) and (max-width: 750px){ /* rules for screen sizes between 500 and 750px */
+  .grid {
+    grid-template-columns: 1fr 1fr; /* changes the grid layout from a 3-column grid to a 2-column grid (fr = unit fraction) */
+  }
+  .about {
+    max-width: var(--full-viewport);
+  }
+}
+@media all and (max-width: 750px) {
+  .grid {
+    grid-gap: 10px; /* spacing between grid items reduced to 10px */
+  }
+  .grid__item:last-child {
+    grid-column: auto / auto; /* The grid-column CSS shorthand property specifies a grid item's size and location within a grid column by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the inline-start and inline-end edge of its grid area. */
+    grid-row: auto / auto;
+  }
+  h1 {
+    font-size: 22px;/* changes font size */
+  }
+}
+
+/*adding some animation*/
+
+@keyframes color-change {
+  0% {
+    fill: var(--sun-1);
+  }
+  50% {
+    fill: var(--sun-2);
+  }
+  100% {
+    fill: var(--sun-3bbf);
+  }
+}
+@keyframes cloud-move {
+  from {
+    transform: translate(0, 50px);
+  }
+  to {
+    transform: translate(200px, 50px);
+  }
+}
+@keyframes cloud-move-reverse {
+  from {
+    transform: translate(446px, 48px);
+  }
+  to {
+    transform: translate(100px, 48px);
+  }
+}
+.sun {
+  animation: 4s color-change infinite alternate linear;
+}
+.cloud-front {
+  animation: 30s cloud-move infinite alternate linear;
+}
+.cloud-back {
+  animation: 34s cloud-move-reverse infinite alternate linear;
+}
