@@ -45,10 +45,6 @@ module.exports = {
     "block-opening-brace-space-before": "always",
     "color-hex-case": "lower",
     "color-hex-length": "short",
-    "comment-empty-line-before": [ "always", {
-      except: ["first-nested"],
-      ignore: ["stylelint-commands"],
-    } ],
     "comment-whitespace-inside": "always",
     "custom-property-empty-line-before": [ "always", {
       except: [
@@ -115,8 +111,8 @@ module.exports = {
     "selector-combinator-space-after": "always",
     "selector-combinator-space-before": "always",
     "selector-descendant-combinator-no-non-space": true,
-    "selector-list-comma-newline-after": "always",
-    "selector-list-comma-space-before": "never",
+    "selector-list-comma-newline-after": "always-multi-line",
+    "selector-list-comma-space-before": "always-multi-line",
     "selector-max-empty-lines": 0,
     "selector-pseudo-class-case": "lower",
     "selector-pseudo-class-parentheses-space-inside": "never",
