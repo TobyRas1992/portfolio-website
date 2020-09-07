@@ -4,11 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="Tobias' Portfolio" content="This is the portfolio website that Tobias Rasmussen has developed during his first weeks as CareerFoundry.">
-    <title>Get in touch with Tobias</title>
+    <title>Get in touch</title>
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"> <!-- This link goes to a CDN (Content dilivery network), downloading a file that resets/normalizes the client's CSS. THIS MUST COME BEFORE THE LINK TO OUR STYLESHEET! -->
-    <<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"><!-- This tag embeds the roboto condensend font from Google Fonts onto my HTML file. Note: it is important to put BEFORE the link to the styles.css -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> <!-- This tag embeds the roboto condensend font from Google Fonts onto my HTML file. Note: it is important to put BEFORE the link to the styles.css -->
     <link rel="stylesheet" type="text/css" href="css/style.production.css"> <!-- The link to the external stylesheet-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--viewport tag-->
     <div>
@@ -33,45 +33,43 @@
       </header>
     </div>
   </head>
-
   <body>
+    <div>
+      <form action="" method="post" id="contact-form" role="form">
+        <label class="standard-label" for="contact-email">E-mail: </label>
+        <input type="email" id="contact-email" role="textbox" required> <br>
 
+        <label class="standard-label" for="contact-tel">Telephone: </label>
+        <!-- concerning the pattern below for the tel attribute: If you’re going to accept international numbers, we recommend not putting any restrictions on your input field.-->
+        <input type="tel" pattern="\d{3}[\-]\d{3}[\-]\d{4}" role="textbox" id="contact-tel"> <br>
 
-  <div>
-    <form action="" method="post" id="contact-form" role="form">
-      <label class="standard-label" for="contact-email">E-mail: </label>
-      <input type="email" id="contact-email" role="textbox" required> <br>
+        <label class="standard-label" for="contact-text">Message: </label>
+        <textarea maxlength="240" id="contact-text" role="textbox" required></textarea> <br>
 
-      <label class="standard-label" for="contact-tel">Telephone: </label>
-      <!-- concerning the pattern below for the tel attribute: If you’re going to accept international numbers, we recommend not putting any restrictions on your input field.-->
-      <input type="tel" pattern="\d{3}[\-]\d{3}[\-]\d{4}" role="textbox" id="contact-tel"> <br>
+        <input type="submit" value="Send message" role="button">
+      </form>
+    </div>
 
-      <label class="standard-label" for="contact-text">Message: </label>
-      <textarea maxlength="240" id="contact-text" role="textbox" required></textarea> <br>
+    <h1 id="contact">Contact</h1>
 
-      <input type="submit" value="Send message" role="button">
-    </form>
-  </div>
+    <a href="mailto:tobiasrasmussen@outlook.com">Contact me</a>
 
-  <h1 id="contact">Contact</h1>
+    <div>
+      <p>
+        Hegningvej 79 5260 <br>
+        Odense S <br>
+        Denmark <br>
+        <br>
+        <a href="tel:+4553320692">+45 53 32 06 92</a><br>
+        <a href="skype:live:tobiasrasmussen_8">Skype live:tobiasrasmussen_8 </a><br>
+        <a href="mailto:tobiasrasmussen@outlook.com">tobiasrasmussen@outlook.com</a>
+      </p>
+    </div>
 
-  <a href="mailto:tobiasrasmussen@outlook.com">Contact me</a>
-
-  <div>
-    <p>
-      Hegningvej 79 5260 <br>
-      Odense S <br>
-      Denmark <br>
-      <br>
-      <a href="tel:+4553320692">+45 53 32 06 92</a><br>
-      <a href="skype:live:tobiasrasmussen_8">Skype live:tobiasrasmussen_8 </a><br>
-      <a href="mailto:tobiasrasmussen@outlook.com">tobiasrasmussen@outlook.com</a>
-    </p>
-  </div>
-
-  <script src="js/tota11y.min.js"></script>
+    <script src="js/tota11y.min.js"></script>
 
   </body>
+
 
   <footer class="page-footer">
 
